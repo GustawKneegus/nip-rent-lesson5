@@ -1,5 +1,4 @@
 import pytest
-
 from pydantic import ValidationError
 from src.models import Apartment, Tenant
 
@@ -40,7 +39,7 @@ def test_apartment_from_dict():
     assert apartment.area_m2 == data["area_m2"]
     assert len(apartment.rooms) == len(data["rooms"])
 
-    data['area_m2'] = "25m2" # Invalid field
+    data['area_m2'] = "25m2" 
     with pytest.raises(ValidationError):
         wrong_apartment = Apartment(**data)
 
